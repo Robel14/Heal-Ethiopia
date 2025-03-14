@@ -14,10 +14,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Extract the ZIP file (assuming the ZIP file is at the root)
+      # List files in the repository before extracting
+      - name: List files before extraction
+        run: |
+          echo "Files before extraction:"
+          ls -R  # This lists all files in the repository
+
+      # Extract the ZIP file (correct path: heal-website.zip)
       - name: Extract heal-website.zip
         run: |
           unzip heal-website.zip -d extracted/
+
+      # List files after extraction
+      - name: List files after extraction
+        run: |
+          echo "Files after extraction:"
+          ls -R extracted/  # List contents of the 'extracted' folder
 
       # Commit the extracted files back to the repository
       - name: Commit extracted files

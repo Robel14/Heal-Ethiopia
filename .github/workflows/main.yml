@@ -14,10 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Extract ZIP file (assuming your ZIP file is at the root of the repository)
-      - name: Extract ZIP file
+      # Extract the ZIP file (assuming the ZIP file is at the root)
+      - name: Extract heal-website.zip
         run: |
-          unzip yourfile.zip -d extracted/
+          unzip heal-website.zip -d extracted/
 
       # Commit the extracted files back to the repository
       - name: Commit extracted files
@@ -25,5 +25,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git commit -m "Extract ZIP file"
+          git commit -m "Extract heal-website.zip"
           git push
+

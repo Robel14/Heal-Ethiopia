@@ -25,18 +25,22 @@ jobs:
         run: |
           unzip heal-website.zip -d extracted/
 
-      # List files after extraction
-      - name: List files after extraction
+      # Check if extraction was successful
+      - name: Verify extraction
         run: |
-          echo "Files after extraction:"
-          ls -R extracted/  # List contents of the 'extracted' folder
+          echo "Files in the extracted directory:"
+          ls -R extracted/  # List contents of the 'extracted' folder to verify extraction
 
-      # Commit the extracted files back to the repository
+      # Commit the extracted files back to the repository if extraction is successful
       - name: Commit extracted files
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Extract heal-website.zip"
-          git push
-
+          if [ "$(ls -A extracted/)" ]; then
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add extracted/
+            git commit -m "Extract heal-website.zip"
+            git push
+          else
+            echo "Extraction failed or no files to commit."
+            exit 1
+          fi

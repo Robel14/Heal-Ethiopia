@@ -1,0 +1,29 @@
+name: Extract ZIP File
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+
+jobs:
+  extract-zip:
+    runs-on: ubuntu-latest  # Run on an Ubuntu environment
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Extract ZIP file (assuming your ZIP file is at the root of the repository)
+      - name: Extract ZIP file
+        run: |
+          unzip yourfile.zip -d extracted/
+
+      # Commit the extracted files back to the repository
+      - name: Commit extracted files
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Extract ZIP file"
+          git push

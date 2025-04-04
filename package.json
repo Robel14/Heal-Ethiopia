@@ -1,0 +1,15 @@
+{
+  "name": "heal-ethiopia",
+  "version": "1.0.0",
+  "description": "This repository contains the code for the HEAL Ethiopia website with an integrated admin panel for content management.",
+  "main": "tailwind.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
